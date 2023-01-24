@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react"
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
-import { darken, lighten } from "@mui/material/styles"
-import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium"
+import { styled } from "@mui/material"
 
 const columns: GridColDef[] = [
   {
@@ -59,20 +57,28 @@ const rows = [
   { id: 10, country: "France", gold: 5, silver: 7, bronze: 2, all: 14 }
 ]
 
+const CustomData = styled(DataGrid)`
+  height: 500px;
+  width: 40%;
+  margin: 0 auto;
+
+  & .MuiDataGrid-cell:hover {
+    cursor: pointer;
+  }
+`
+
 export default function DataTable() {
   return (
-    <div style={{ height: 400, width: "100%" }}>
-      <>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              pageSize: 5
-            }
-          }}
-        />
-      </>
-    </div>
+    <>
+      <CustomData
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            pageSize: 5
+          }
+        }}
+      />
+    </>
   )
 }
