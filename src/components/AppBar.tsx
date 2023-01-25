@@ -16,7 +16,7 @@ export default function ButtonAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CustomizedTypography>
-        2020 Winter Olympics Medals Stats
+        2022 Winter Olympics Medals Stats
       </CustomizedTypography>
     </Box>
   )
