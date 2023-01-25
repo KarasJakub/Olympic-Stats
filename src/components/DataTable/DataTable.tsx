@@ -1,12 +1,12 @@
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid"
-import { styled } from "@mui/material"
-import rows from "src/data/MedalsContent.json"
+import { GridColDef } from "@mui/x-data-grid"
+import rows from "src/data/MedalsContentRows.json"
+import * as S from "src/components/DataTable/DataTable.styled"
 
 const columns: GridColDef[] = [
   {
     field: "id",
     headerName: "Position",
-    width: 100,
+    width: 80,
     editable: true
   },
   {
@@ -45,20 +45,10 @@ const columns: GridColDef[] = [
   }
 ]
 
-const CustomData = styled(DataGrid)`
-  height: 475px;
-  width: 40%;
-  margin: 0 auto;
-
-  & .MuiDataGrid-cell:hover {
-    cursor: pointer;
-  }
-`
-
 export default function DataTable() {
   return (
     <>
-      <CustomData
+      <S.DataGridWrapper
         rows={rows}
         columns={columns}
         initialState={{
