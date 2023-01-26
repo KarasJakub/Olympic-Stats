@@ -11,18 +11,19 @@ const englishColumns: GridColDef[] = [
     field: "id",
     headerName: "Position",
     width: 80,
-    editable: true
+    editable: false
   },
   {
     field: "image",
     headerName: "Flag",
+    // eslint-disable-next-line @next/next/no-img-element
     renderCell: props => <img src={props.value} alt="flag photo" />
   },
   {
     field: "country",
     headerName: "Country",
     width: 125,
-    editable: true
+    editable: false
   },
 
   {
@@ -30,28 +31,28 @@ const englishColumns: GridColDef[] = [
     headerName: "Gold medals",
     type: "number",
     width: 110,
-    editable: true
+    editable: false
   },
   {
     field: "silver",
     headerName: "Silver medals",
     type: "number",
     width: 130,
-    editable: true
+    editable: false
   },
   {
     field: "bronze",
     headerName: "Bronze medals",
     type: "number",
     width: 135,
-    editable: true
+    editable: false
   },
   {
     field: "all",
     headerName: "All medals",
     type: "number",
     width: 90,
-    editable: true
+    editable: false
   }
 ]
 
@@ -60,46 +61,47 @@ const polishColumns: GridColDef[] = [
     field: "id",
     headerName: "Pozycja",
     width: 80,
-    editable: true
+    editable: false
   },
   {
     field: "image",
     headerName: "Flaga",
+    // eslint-disable-next-line @next/next/no-img-element
     renderCell: props => <img src={props.value} alt="flaga kraju" />
   },
   {
     field: "country",
     headerName: "Kraj",
     width: 125,
-    editable: true
+    editable: false
   },
   {
     field: "gold",
     headerName: "Złote medale",
     type: "number",
     width: 110,
-    editable: true
+    editable: false
   },
   {
     field: "silver",
     headerName: "Srebrne medale",
     type: "number",
     width: 130,
-    editable: true
+    editable: false
   },
   {
     field: "bronze",
     headerName: "Brązowe medale",
     type: "number",
     width: 135,
-    editable: true
+    editable: false
   },
   {
     field: "all",
     headerName: "Wszystkie",
     type: "number",
     width: 90,
-    editable: true
+    editable: false
   }
 ]
 
