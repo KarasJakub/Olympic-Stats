@@ -1,10 +1,10 @@
 # Olympic Stats App
 
-## Status: `In progress`
+## Status: `Completed`
 
 ## Description
 
-Olympic Stats App
+Olympic Stats App allows you to see last Olympic Medals Stats. You can manually sort rows using functions in headers of table. Choose between English and Polish.
 
 ## Technologies
 
