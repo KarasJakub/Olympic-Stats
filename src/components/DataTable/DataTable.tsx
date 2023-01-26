@@ -16,6 +16,7 @@ const englishColumns: GridColDef[] = [
   {
     field: "image",
     headerName: "Flag",
+    // eslint-disable-next-line @next/next/no-img-element
     renderCell: props => <img src={props.value} alt="flag photo" />
   },
   {
@@ -65,6 +66,7 @@ const polishColumns: GridColDef[] = [
   {
     field: "image",
     headerName: "Flaga",
+    // eslint-disable-next-line @next/next/no-img-element
     renderCell: props => <img src={props.value} alt="flaga kraju" />
   },
   {
