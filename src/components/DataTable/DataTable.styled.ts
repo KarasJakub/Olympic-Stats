@@ -3,7 +3,7 @@ import { DataGrid } from "@mui/x-data-grid"
 
 export const DataGridWrapper = styled(DataGrid)`
 width: 100%;
-max-width: 44rem;
+max-width: 50rem;
 height: 39.5rem;
 margin: 0 auto;
 

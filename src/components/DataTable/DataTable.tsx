@@ -16,7 +16,7 @@ const englishColumns: GridColDef[] = [
   {
     field: "image",
     headerName: "Flag",
-    renderCell: params => <img src={params.value} />
+    renderCell: props => <img src={props.value} alt="flag photo" />
   },
   {
     field: "country",
@@ -65,7 +65,7 @@ const polishColumns: GridColDef[] = [
   {
     field: "image",
     headerName: "Flaga",
-    renderCell: params => <img src={params.value} />
+    renderCell: props => <img src={props.value} alt="flaga kraju" />
   },
   {
     field: "country",
