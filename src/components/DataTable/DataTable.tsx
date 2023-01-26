@@ -14,11 +14,17 @@ const englishColumns: GridColDef[] = [
     editable: true
   },
   {
+    field: "image",
+    headerName: "Flag",
+    renderCell: params => <img src={params.value} />
+  },
+  {
     field: "country",
     headerName: "Country",
     width: 125,
     editable: true
   },
+
   {
     field: "gold",
     headerName: "Gold medals",
@@ -55,6 +61,11 @@ const polishColumns: GridColDef[] = [
     headerName: "Pozycja",
     width: 80,
     editable: true
+  },
+  {
+    field: "image",
+    headerName: "Flaga",
+    renderCell: params => <img src={params.value} />
   },
   {
     field: "country",
