@@ -14,7 +14,21 @@ margin: 0 auto;
 & .MuiDataGrid-columnHeaderTitle {
   text-align: center;
 }
+
+@keyframes ShowRows {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+& .MuiDataGrid-row {
+  animation: ShowRows 1.5s;
+}
+
 `
+
 
 export const ButtonsContainer = styled('div')`
   width: 100%;
