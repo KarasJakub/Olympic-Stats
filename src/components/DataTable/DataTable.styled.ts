@@ -20,5 +20,5 @@ export const ButtonsContainer = styled('div')`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
+  padding: 2rem 0;
 `
