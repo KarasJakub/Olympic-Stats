@@ -3,9 +3,10 @@ import Typography from "@mui/material/Typography"
 
 export const TitleBar = styled(Typography)`
 width: 100%;
-background-color: #0d1e2a;
-text-align: center;
 padding: 2rem 0;
+background-color: ${props => props.theme.palette.primary.main};
+color: ${props => props.theme.palette.secondary.main};
 font-size: 1.5rem;
-color: #ebe6df;
+color: ${props => props.theme.typography.fontFamily};
+text-align: center;
 `

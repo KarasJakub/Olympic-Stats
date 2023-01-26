@@ -12,7 +12,7 @@ const columns: GridColDef[] = [
   {
     field: "country",
     headerName: "Country",
-    width: 120,
+    width: 125,
     editable: true
   },
   {
@@ -26,21 +26,21 @@ const columns: GridColDef[] = [
     field: "silver",
     headerName: "Silver medals",
     type: "number",
-    width: 110,
+    width: 120,
     editable: true
   },
   {
     field: "bronze",
     headerName: "Bronze medals",
     type: "number",
-    width: 110,
+    width: 120,
     editable: true
   },
   {
     field: "all",
     headerName: "All medals",
     type: "number",
-    width: 110,
+    width: 90,
     editable: true
   }
 ]
