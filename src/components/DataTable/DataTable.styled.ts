@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid"
 export const DataGridWrapper = styled(DataGrid)`
 width: 100%;
 max-width: 44rem;
-height: 475px;
+height: 39.5rem;
 margin: 0 auto;
 
 & .MuiDataGrid-cell:hover {
@@ -16,8 +16,9 @@ margin: 0 auto;
 }
 `
 
-export const Button = styled('button')`
-  width: 300px;
-  height: 300px;
-  background-color: blue;
+export const ButtonsContainer = styled('div')`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
 `

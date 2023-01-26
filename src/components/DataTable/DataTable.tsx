@@ -3,6 +3,8 @@ import { GridColDef, plPL } from "@mui/x-data-grid"
 import polishRows from "src/data/MedalsContentRowsPL.json"
 import englishRows from "src/data/MedalsContentRowsEN.json"
 import * as S from "src/components/DataTable/DataTable.styled"
+import Button from "@mui/material/Button"
+import Stack from "@mui/material/Stack"
 
 const englishColumns: GridColDef[] = [
   {
@@ -118,26 +120,32 @@ export default function DataTable() {
         columns={columnsLanguage}
         initialState={{
           pagination: {
-            pageSize: 7
+            pageSize: 10
           }
         }}
         disableSelectionOnClick
         localeText={toolbarLanguage}
       />
-      <S.Button
-        onClick={() => {
-          ChangeLaungage("en")
-        }}
-      >
-        English
-      </S.Button>
-      <S.Button
-        onClick={() => {
-          ChangeLaungage("pl")
-        }}
-      >
-        Polski
-      </S.Button>
+      <S.ButtonsContainer>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              ChangeLaungage("en")
+            }}
+          >
+            English
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              ChangeLaungage("pl")
+            }}
+          >
+            Polski
+          </Button>
+        </Stack>
+      </S.ButtonsContainer>
     </>
   )
 }
