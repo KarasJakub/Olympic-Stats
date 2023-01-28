@@ -15,12 +15,17 @@ type SortDataTypes = {
   reverse: boolean
 }
 
+export type SortButtonTypes = {
+  sortOrder: SortOrder
+  columnKey: SortKeys
+  sortKey: SortKeys
+  onClick: () => void
+}
+
 function sortData(props: SortDataTypes) {
   if (!props.sortKey) return props.tableData
 
   const toSort = [...MedalsEN]
-  // console.log(MedalsEN)
-  // console.log(toSort.reverse())
   const sortedData = toSort.sort((a, b) => {
     return a[props.sortKey] > b[props.sortKey] ? 1 : -1
   })
@@ -32,28 +37,12 @@ function sortData(props: SortDataTypes) {
   return sortedData
 }
 
-function SortButton({
-  sortOrder,
-  columnKey,
-  sortKey,
-  onClick
-}: {
-  sortOrder: SortOrder
-  columnKey: SortKeys
-  sortKey: SortKeys
-  onClick: () => void
-}) {
+function SortButton(props: SortButtonTypes) {
+  const test = props.sortKey === props.columnKey && props.sortOrder === "desc"
   return (
-    <button
-      onClick={onClick}
-      className={`${
-        sortKey === columnKey && sortOrder === "desc"
-          ? "sort-button sort-reverse"
-          : "sort-button"
-      }`}
-    >
+    <S.SortButton onClick={props.onClick} className="sort-reverse">
       ▲
-    </button>
+    </S.SortButton>
   )
 }
 
