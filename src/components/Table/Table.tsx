@@ -1,23 +1,72 @@
 import * as S from "src/components/Table/Table.styled"
 import MedalsEN from "src/data/MedalsContentRowsEN.json"
 import Image from "next/image"
+import React, { useCallback } from "react"
 
-export default function Table() {
+type Data = typeof MedalsEN
+
+type SortKeys = keyof Data[0]
+
+type SortOrder = "ascn" | "desc"
+
+function sortData({
+  tableData,
+  sortKey,
+  reverse
+}: {
+  tableData: Data
+  sortKey: SortKeys
+  reverse: boolean
+}) {
+  if (!sortKey) return tableData
+
+  const sortedData = MedalsEN.sort((a, b) => {
+    return a[sortKey] > b[sortKey] ? 1 : -1
+  })
+
+  if (reverse) {
+    return sortedData.reverse()
+  }
+
+  return sortedData
+}
+
+function SortButton() {
+  return <button>▲</button>
+}
+
+export default function Table({ data }: { data: Data }) {
+  const [sortKey, setSortKey] = React.useState<SortKeys>("id")
+  const [sortOrder, setSortOrder] = React.useState<SortOrder>("ascn")
+
+  const headers = [
+    { key: "id", label: "Position" },
+    { key: "country", label: "Country" },
+    { key: "flag", label: "Flag" },
+    { key: "gold", label: "Gold Medals" },
+    { key: "silver", label: "Silver Medals" },
+    { key: "bronze", label: "Bronze Medals" },
+    { key: "all", label: "All Medals" }
+  ]
+
+  const sortedData = useCallback(
+    () => sortData({ tableData: data, sortKey, reverse: sortOrder === "desc" }),
+    [data, sortKey, sortOrder]
+  )
+
   return (
     <>
       <S.TableWrapper>
         <S.Table>
           <S.TableBody>
             <S.Row>
-              <S.Headers>Position</S.Headers>
-              <S.Headers>Country</S.Headers>
-              <S.Headers>Flag</S.Headers>
-              <S.Headers>Gold Medals</S.Headers>
-              <S.Headers>Silver Medals</S.Headers>
-              <S.Headers>Bronze Medals</S.Headers>
-              <S.Headers>All Medals</S.Headers>
+              {headers.map(item => (
+                <>
+                  <S.Headers key={item.key}>{item.label}</S.Headers>
+                </>
+              ))}
             </S.Row>
-            {MedalsEN.map(item => (
+            {sortedData().map(item => (
               <S.Row key={item.id}>
                 <S.Cell>{item.id}</S.Cell>
                 <S.Cell>{item.country}</S.Cell>
