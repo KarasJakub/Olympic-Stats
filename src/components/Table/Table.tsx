@@ -38,9 +38,16 @@ function sortData(props: SortDataTypes) {
 }
 
 function SortButton(props: SortButtonTypes) {
-  const test = props.sortKey === props.columnKey && props.sortOrder === "desc"
+  // const test = props.sortKey === props.columnKey && props.sortOrder === "desc"
   return (
-    <S.SortButton onClick={props.onClick} className="sort-reverse">
+    <S.SortButton
+      onClick={props.onClick}
+      className={`${
+        props.sortKey === props.columnKey && props.sortOrder === "desc"
+          ? "sort-reverse"
+          : ""
+      }`}
+    >
       ▲
     </S.SortButton>
   )

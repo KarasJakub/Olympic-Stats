@@ -30,7 +30,5 @@ export const Cell = styled.td`
 export const SortButton = styled.button`
 margin-left: 5px;
 cursor: pointer;
-& .sort-reverse {
-    background-color: pink;
-}
+transition: transform .5s;
 `
