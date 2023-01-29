@@ -146,20 +146,20 @@ export default function Table({ data }: { data: Data }) {
           </S.TableBody>
         </S.Table>
         <S.LaungageButtonsWrapper>
-          <S.LaungageButton
+          <LaungageButton
             onClick={() => {
               ChangeLaungage("pl")
             }}
           >
             Polski
-          </S.LaungageButton>
-          <S.LaungageButton
+          </LaungageButton>
+          <LaungageButton
             onClick={() => {
               ChangeLaungage("en")
             }}
           >
             English
-          </S.LaungageButton>
+          </LaungageButton>
         </S.LaungageButtonsWrapper>
       </S.TableWrapper>
     </>

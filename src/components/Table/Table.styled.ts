@@ -20,7 +20,6 @@ export const TableBody = styled.tbody`
 `
 
 export const Row = styled.tr`
-border: 1px solid black;
 `
 
 export const Headers = styled.th`
@@ -32,6 +31,11 @@ export const Headers = styled.th`
 export const Cell = styled.td`
     background-color: #fff;
     text-align: center;
+    &:hover {
+        background-color: #CECECE;
+        cursor: pointer;
+    }
+
 `
 
 export const SortButton = styled.button`
@@ -44,18 +48,4 @@ transition: transform .5s;
 
 export const LaungageButtonsWrapper = styled.div`
 display: flex;
-`
-
-export const LaungageButton = styled.button`
-    padding: 10px;
-    min-width: 70px;
-    font-size: 1rem;
-    background-color: transparent;
-    border: 2px solid #CECECE;
-    margin: 1rem;
-    cursor: pointer;
-
-    &:hover {
-        background-color: #CECECE;
-    }
 `
