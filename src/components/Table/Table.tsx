@@ -38,7 +38,6 @@ function sortData(props: SortDataTypes) {
 }
 
 function SortButton(props: SortButtonTypes) {
-  // const test = props.sortKey === props.columnKey && props.sortOrder === "desc"
   return (
     <S.SortButton
       onClick={props.onClick}
@@ -104,8 +103,8 @@ export default function Table({ data }: { data: Data }) {
                   <Image
                     src={item.image}
                     alt={item.country}
-                    width={30}
-                    height={30}
+                    width={40}
+                    height={40}
                   />
                 </S.Cell>
                 <S.Cell>{item.gold}</S.Cell>
