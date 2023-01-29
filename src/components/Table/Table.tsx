@@ -1,6 +1,7 @@
 import * as S from "src/components/Table/Table.styled"
 import englishColumns from "src/data/MedalsContentRowsEN.json"
 import polishColumns from "src/data/MedalsContentRowsPL.json"
+import LaungageButton from "../Buttons/LaungageButton"
 import Image from "next/image"
 import React, { useCallback } from "react"
 
@@ -79,6 +80,7 @@ export default function Table({ data }: { data: Data }) {
     }
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function sortData(props: SortDataTypes) {
     if (!props.sortKey) return props.tableData
 
@@ -96,7 +98,7 @@ export default function Table({ data }: { data: Data }) {
 
   const sortedData = useCallback(
     () => sortData({ tableData: data, sortKey, reverse: sortOrder === "desc" }),
-    [data, sortKey, sortOrder]
+    [data, sortData, sortKey, sortOrder]
   )
 
   function changeSort(key: SortKeys) {
@@ -143,21 +145,23 @@ export default function Table({ data }: { data: Data }) {
             ))}
           </S.TableBody>
         </S.Table>
+        <S.LaungageButtonsWrapper>
+          <S.LaungageButton
+            onClick={() => {
+              ChangeLaungage("pl")
+            }}
+          >
+            Polski
+          </S.LaungageButton>
+          <S.LaungageButton
+            onClick={() => {
+              ChangeLaungage("en")
+            }}
+          >
+            English
+          </S.LaungageButton>
+        </S.LaungageButtonsWrapper>
       </S.TableWrapper>
-      <S.LaungageButton
-        onClick={() => {
-          ChangeLaungage("pl")
-        }}
-      >
-        Polski
-      </S.LaungageButton>
-      <S.LaungageButton
-        onClick={() => {
-          ChangeLaungage("en")
-        }}
-      >
-        English
-      </S.LaungageButton>
     </>
   )
 }

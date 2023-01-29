@@ -5,11 +5,15 @@ export const TableWrapper = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding-bottom: 2rem;
 `
+
 export const Table = styled.table`
     width: 50%;
     background-color: #CECECE;
+
 `
 
 export const TableBody = styled.tbody`
@@ -38,8 +42,20 @@ cursor: pointer;
 transition: transform .5s;
 `
 
+export const LaungageButtonsWrapper = styled.div`
+display: flex;
+`
+
 export const LaungageButton = styled.button`
-    width: 200px;
-    height: 200px;
-    background-color: blue;
+    padding: 10px;
+    min-width: 70px;
+    font-size: 1rem;
+    background-color: transparent;
+    border: 2px solid #CECECE;
+    margin: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #CECECE;
+    }
 `
