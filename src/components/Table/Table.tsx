@@ -1,9 +1,10 @@
 import * as S from "src/components/Table/Table.styled"
-import MedalsEN from "src/data/MedalsContentRowsEN.json"
+import englishColumns from "src/data/MedalsContentRowsEN.json"
+import polishColumns from "src/data/MedalsContentRowsPL.json"
 import Image from "next/image"
 import React, { useCallback } from "react"
 
-type Data = typeof MedalsEN
+type Data = typeof englishColumns
 
 type SortKeys = keyof Data[0]
 
@@ -22,21 +23,6 @@ export type SortButtonTypes = {
   onClick: () => void
 }
 
-function sortData(props: SortDataTypes) {
-  if (!props.sortKey) return props.tableData
-
-  const toSort = [...MedalsEN]
-  const sortedData = toSort.sort((a, b) => {
-    return a[props.sortKey] > b[props.sortKey] ? 1 : -1
-  })
-
-  if (props.reverse) {
-    return sortedData.reverse()
-  }
-
-  return sortedData
-}
-
 function SortButton(props: SortButtonTypes) {
   return (
     <S.SortButton
@@ -52,19 +38,61 @@ function SortButton(props: SortButtonTypes) {
   )
 }
 
+const englishHeaders: { key: SortKeys; label: string }[] = [
+  { key: "id", label: "Position" },
+  { key: "country", label: "Country" },
+  { key: "image", label: "Flag" },
+  { key: "gold", label: "Gold Medals" },
+  { key: "silver", label: "Silver Medals" },
+  { key: "bronze", label: "Bronze Medals" },
+  { key: "all", label: "All Medals" }
+]
+
+const polishHeaders: { key: SortKeys; label: string }[] = [
+  { key: "id", label: "Pozycja" },
+  { key: "country", label: "Kraj" },
+  { key: "image", label: "Flaga" },
+  { key: "gold", label: "Złote Medale" },
+  { key: "silver", label: "Srebrne Medale" },
+  { key: "bronze", label: "Brązowe Medale" },
+  { key: "all", label: "Wszystkie Medals" }
+]
+
 export default function Table({ data }: { data: Data }) {
   const [sortKey, setSortKey] = React.useState<SortKeys>("id")
   const [sortOrder, setSortOrder] = React.useState<SortOrder>("ascn")
+  const [columnsLanguage, setColumnsLanguage] = React.useState(englishColumns)
+  const [columnsHeader, setColumnsHeader] = React.useState(englishHeaders)
 
-  const headers: { key: SortKeys; label: string }[] = [
-    { key: "id", label: "Position" },
-    { key: "country", label: "Country" },
-    { key: "image", label: "Flag" },
-    { key: "gold", label: "Gold Medals" },
-    { key: "silver", label: "Silver Medals" },
-    { key: "bronze", label: "Bronze Medals" },
-    { key: "all", label: "All Medals" }
-  ]
+  function ChangeLaungage(lang: string) {
+    if (lang === "en") {
+      setColumnsLanguage(englishColumns)
+      setColumnsHeader(englishHeaders)
+      console.log(columnsHeader)
+    }
+    if (lang === "pl") {
+      setColumnsLanguage(polishColumns)
+      setColumnsHeader(polishHeaders)
+      console.log(columnsHeader)
+    } else {
+      setColumnsLanguage(englishColumns)
+    }
+  }
+
+  function sortData(props: SortDataTypes) {
+    if (!props.sortKey) return props.tableData
+
+    const toSort = [...columnsLanguage]
+    const sortedData = toSort.sort((a, b) => {
+      return a[props.sortKey] > b[props.sortKey] ? 1 : -1
+    })
+
+    if (props.reverse) {
+      return sortedData.reverse()
+    }
+
+    return sortedData
+  }
 
   const sortedData = useCallback(
     () => sortData({ tableData: data, sortKey, reverse: sortOrder === "desc" }),
@@ -82,7 +110,7 @@ export default function Table({ data }: { data: Data }) {
         <S.Table>
           <S.TableBody>
             <S.Row>
-              {headers.map(item => (
+              {columnsHeader.map(item => (
                 <>
                   <S.Headers key={item.key}>
                     {item.label}{" "}
@@ -116,6 +144,20 @@ export default function Table({ data }: { data: Data }) {
           </S.TableBody>
         </S.Table>
       </S.TableWrapper>
+      <S.LaungageButton
+        onClick={() => {
+          ChangeLaungage("pl")
+        }}
+      >
+        Polski
+      </S.LaungageButton>
+      <S.LaungageButton
+        onClick={() => {
+          ChangeLaungage("en")
+        }}
+      >
+        English
+      </S.LaungageButton>
     </>
   )
 }

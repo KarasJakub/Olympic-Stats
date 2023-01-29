@@ -37,3 +37,9 @@ margin-left: 5px;
 cursor: pointer;
 transition: transform .5s;
 `
+
+export const LaungageButton = styled.button`
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+`
