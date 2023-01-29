@@ -7,7 +7,6 @@ export const TableWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 2rem;
 `
 
 export const Table = styled.table`
