@@ -4,6 +4,7 @@ import polishColumns from "src/data/MedalsContentRowsPL.json"
 import LaungageButton from "../Buttons/LaungageButton"
 import Image from "next/image"
 import React, { useCallback } from "react"
+import Input from "src/components/Input/Input"
 
 type Data = typeof englishColumns
 
@@ -64,6 +65,7 @@ export default function Table({ data }: { data: Data }) {
   const [sortOrder, setSortOrder] = React.useState<SortOrder>("ascn")
   const [columnsLanguage, setColumnsLanguage] = React.useState(englishColumns)
   const [columnsHeader, setColumnsHeader] = React.useState(englishHeaders)
+  const [inputValue, setInputValue] = React.useState("")
 
   function ChangeLaungage(lang: string) {
     if (lang === "en") {
@@ -108,6 +110,11 @@ export default function Table({ data }: { data: Data }) {
 
   return (
     <>
+      <Input
+        onChange={event => {
+          setInputValue(event.target.value)
+        }}
+      />
       <S.TableWrapper>
         <S.Table>
           <S.TableBody>
@@ -125,24 +132,26 @@ export default function Table({ data }: { data: Data }) {
                 </>
               ))}
             </S.Row>
-            {sortedData().map(item => (
-              <S.Row key={item.id}>
-                <S.Cell>{item.id}</S.Cell>
-                <S.Cell>{item.country}</S.Cell>
-                <S.Cell>
-                  <Image
-                    src={item.image}
-                    alt={item.country}
-                    width={40}
-                    height={40}
-                  />
-                </S.Cell>
-                <S.Cell>{item.gold}</S.Cell>
-                <S.Cell>{item.silver}</S.Cell>
-                <S.Cell>{item.bronze}</S.Cell>
-                <S.Cell>{item.all}</S.Cell>
-              </S.Row>
-            ))}
+            {sortedData()
+              .filter(item => item.country.includes(inputValue))
+              .map(item => (
+                <S.Row key={item.id}>
+                  <S.Cell>{item.id}</S.Cell>
+                  <S.Cell>{item.country}</S.Cell>
+                  <S.Cell>
+                    <Image
+                      src={item.image}
+                      alt={item.country}
+                      width={40}
+                      height={40}
+                    />
+                  </S.Cell>
+                  <S.Cell>{item.gold}</S.Cell>
+                  <S.Cell>{item.silver}</S.Cell>
+                  <S.Cell>{item.bronze}</S.Cell>
+                  <S.Cell>{item.all}</S.Cell>
+                </S.Row>
+              ))}
           </S.TableBody>
         </S.Table>
         <S.LaungageButtonsWrapper>
